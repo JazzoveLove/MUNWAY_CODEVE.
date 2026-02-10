@@ -1,0 +1,4 @@
+1.SQLModel
+2. Zasada "Atomic Transactions"
+3. Atomic Decrement
+4. 
