@@ -17,9 +17,10 @@ class Product(SQLModel, table=True):
     name: str
     slug: str
     description: Optional[str] = None
-    price: int 
+    price: float
     drop: Optional["Drop"] = Relationship(back_populates="products")
     variations: List["ProductVariation"] = Relationship(back_populates="product")
+    image: str
 
 class ProductVariation(SQLModel, table=True):
     __tablename__ = "product_variations"
@@ -29,3 +30,11 @@ class ProductVariation(SQLModel, table=True):
     color: str
     inventory_qty: int
     product: Optional["Product"] = Relationship(back_populates="variations")
+
+class ProductRead(SQLModel):
+    name: str
+    slug: str
+    price: float
+    description: str | None = None
+    variations: list[ProductVariation] = []
+    image: str

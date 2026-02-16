@@ -1,9 +1,14 @@
-from sqlmodel import Session
+from sqlmodel import Session, SQLModel
 from database import engine
 from models import Drop, Product, ProductVariation
 from datetime import datetime
 
+
 def seed_database():
+
+    SQLModel.metadata.drop_all(engine)
+    SQLModel.metadata.create_all(engine)
+    
     with Session(engine) as session:
 
 
@@ -15,10 +20,11 @@ def seed_database():
 
         hoodie = Product(
             name="Oversize Heavy FBI HOODIE",
-            lug="oversize-heavy-hoodie-black",
+            slug="oversize-heavy-hoodie-black",
             description="Gruba bluza 480gsm, 100% bawełna organiczna.",
             price=29900,  # Cena w groszach (299.00 PLN)
-            drop=drop_v1
+            drop=drop_v1,
+            image="/bluza1.jpg"
         )
 
         var_s = ProductVariation(

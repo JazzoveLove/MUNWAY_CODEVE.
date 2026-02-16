@@ -1,24 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from config import ORIGINS
+from routers import products
 
 app = FastAPI()
 
-# To jest kluczowe, żeby Next.js mógł "rozmawiać" z Pythonem
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Na początek pozwalamy wszystkim, potem to zabezpieczymy
+    allow_origins=ORIGINS,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-@app.get("/")
-def read_root():
-    return {"message": "Siema! MUNWAY_Codeve Backend działa!"}
-
-@app.get("/sklep")
-def get_store_info():
-    return {
-        "nazwa": "MUNWAY_Codeve",
-        "status": "W budowie",
-        "wlasciciel": "Maciej"
-    }
+app.include_router(products.router)

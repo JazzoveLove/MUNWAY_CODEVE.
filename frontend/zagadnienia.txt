@@ -1,4 +1,46 @@
-1.SQLModel
-2. Zasada "Atomic Transactions"
-3. Atomic Decrement
-4. 
+1.SQLModel = "Pydantic + SQLAlchemy w jednej klasie" ;)
+2. Zasada "Atomic Transactions" = "Transakcja jest niepodzielna: albo wykona się CAŁA albo nie wykona się NIC"-> Chroni spójność danych ;)
+3. Atomic Decrement = "zmniejszenie wartości bez ryzyka konfliktu przy równoległych requestach" ;)
+4. Promise (1 -> pending 2-> fullfileed 3->rejected) ;)
+5. spread attributes
+6. W jsx roznica zapisu "Wewnątz tagu" a "Między tagami"
+7 . Wewnątrz return (czyli w części wizualnej) React wymaga, aby każda operacja zwracała wartość.
+8. implicit return
+9. Przekazywanie key w React nie jest przekazywanie props 
+10. href
+11. params
+12. props
+13. wrapper
+14. Pydatnic
+15. Session
+16. Engine
+17. SQLAlchemy
+18. commit() = "Zapsiz wszystkie zmiany z tej transakcji"
+19. rollback() = "Cofnij wszystkie zmiany z tej transakcji"
+20. race condtion
+21. Typowanie propsów w Next.js
+22. świat typów i świat wartości 
+23. indexed access types
+24. destrukturyzacja 
+25. argumeny funkcji a Propsy
+26. Request Memoization
+27. Prop Drilling
+28. Szybkie serwery CDN
+29. AWS S3
+30. Słownik typów
+31. Modularność
+32. syntax sugar
+33. Roznica w przekazywaniu Propsów do funkcji
+34. hoisting
+35. Separation of Concerns
+36. Hydration
+ 
+
+DODAC POTEM ALEMBIC
+
+
+I) Object (Obiekt)
+II) Typ(Type/Interface)
+III) Propsy(Props)
+
+
