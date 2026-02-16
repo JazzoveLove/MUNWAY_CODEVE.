@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ProductVariation } from "@/app/type";
+import { ProductVariation } from "@/app/types";
 
 interface Props {
   variations: ProductVariation[];

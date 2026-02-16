@@ -1,20 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Product } from "@/app/type";
-
-async function getProducts(): Promise<Product[]> {
-  const res = await fetch("http://127.0.0.1:8000/products", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Something went wrong");
-  }
-  return res.json();
-}
+import { getProducts } from "@/app/lib/api";
 
 export default async function Home() {
-  const products: Product[] = await getProducts();
+  const products = await getProducts();
 
   return (
     <div className="p-10 bg-gray-50 min-h-screen">

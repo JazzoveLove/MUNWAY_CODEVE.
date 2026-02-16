@@ -1,6 +1,0 @@
-1. SQLModel a BaseModel
-2. Dependency Injection
-3. Sesja w Bazie danych
-4. FastAPI tworzy sesję bazy danych na czas jednego requestu, wstrzykuje ją do endpointu przez Depends,
-a potem zamyka — dzięki temu unikamy konfliktów i wycieków połączeń.
-5. DTO

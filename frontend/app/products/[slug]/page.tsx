@@ -1,26 +1,17 @@
 import Image from "next/image";
-import { Product } from "@/app/type"; // Import typów
-import ProductSelector from "@/app/components/ProductSelector"; // <--- 1. IMPORTUJEMY TWÓJ KOMPONENT
+import ProductSelector from "@/app/components/ProductSelector";
+import { getProduct } from "@/app/lib/api";
 
-// Funkcja pobierająca JEDEN produkt (pewnie już ją masz)
-async function getProduct(slug: string): Promise<Product> {
-  const res = await fetch(`http://127.0.0.1:8000/products/${slug}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error("Nie znaleziono produktu");
-  return res.json();
+interface ProductPageProps {
+  params: Promise<{ slug: string }>;
 }
 
-export default async function ProductPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const product = await getProduct(params.slug);
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { slug } = await params;
+  const product = await getProduct(slug);
 
   return (
     <div className="max-w-6xl mx-auto p-8 grid grid-cols-1 md:grid-cols-2 gap-12">
-      {/* LEWA STRONA: ZDJĘCIE */}
       <div className="relative aspect-square bg-gray-100 rounded-2xl overflow-hidden">
         <Image
           src={product.image}
@@ -30,7 +21,6 @@ export default async function ProductPage({
         />
       </div>
 
-      {/* PRAWA STRONA: INFO + GUZIKI */}
       <div className="flex flex-col justify-center">
         <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
 
@@ -41,16 +31,12 @@ export default async function ProductPage({
           })}
         </p>
 
-        {/* --- TU WSTAWIAMY TWÓJ KOMPONENT --- */}
         <div className="mb-4">
           <h3 className="text-sm font-medium text-gray-900 mb-2">
             Wybierz rozmiar:
           </h3>
-
-          {/* Przekazujemy listę wariantów do środka */}
           <ProductSelector variations={product.variations} />
         </div>
-        {/* ----------------------------------- */}
 
         <p className="text-gray-600 leading-relaxed">{product.description}</p>
 
